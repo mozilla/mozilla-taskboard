@@ -1,0 +1,19 @@
+{% extends "taskboard/base.html" %}
+
+{% block page_title %}{{ _('Task') }}{% endblock %}
+
+{% block main_content %}
+  <h1>{{ task.summary }}</h1>
+  <div id="instructions" class="well">
+    {{ markdown(task.instructions) }}
+    <br>
+    {% if task.accepted_by==request.user.get_profile() %}
+      {{ _("Assigned to") }}: {{ _("You") }}
+      <a href="{{ url("release_task", slug=task.slug) }}"  class="btn">{{ _("Release this task") }}</a>
+    {% elif task.accepted_by %}
+      {{ _("Assigned to") }}: {{ task.accepted_by }}
+    {% else %}
+      <a href="{{ url("take_task", slug=task.slug) }}"  class="btn">{{ _("Take this task") }}</a>
+    {% endif %}
+  </div>
+{% endblock %}

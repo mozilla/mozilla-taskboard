@@ -1,0 +1,23 @@
+{% extends "taskboard/base.html" %}
+
+{% set nav_list_tasks = "active" %}
+{% block sub_nav %}
+  {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+  {% for task in task_list %}
+    <section class="task well">
+      <h1><a href="{{ task.get_absolute_url() }}"> {{ task.summary }}</a></h1>
+      {% if task.user_can_edit(request.user) %}
+        <a class="btn" href="{{ url("edit_task", slug=task.slug) }}">{{ _("Edit") }}</a>
+      {% endif %}
+      <div class="instructions">{{ markdown(task.instructions) }}</div>
+      {% if task.created_by %}
+        <p>{{ _("Created by:") }}{{ task.created_by }}</p>
+      {% endif %}
+    </section>
+  {% else %}
+    <p>{% trans %}No Tasks{% endtrans %}</p>
+  {% endfor %}
+{% endblock %}

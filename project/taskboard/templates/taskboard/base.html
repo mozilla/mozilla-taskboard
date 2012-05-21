@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block site_css %}
+  {{ super() }}
+  {{ css('taskboard') }}
+{% endblock %}
+
+{% set nav_tasks = "active" %}
+{% block nav %}
+  {{ super() }}
+{% endblock %}
+
+{% block sub_nav %}
+  <div class="btn-toolbar">
+    <div class="btn-group">
+      <a href={{ url('list_tasks') }} class="btn {{ nav_list_tasks }}">{{ _("All Tasks") }}</a>
+      <a href={{ url('new_task') }} class="btn {{ nav_new_task }}">{{ _("New Task") }}</a>
+    </div>
+
+    <form class="form-search pull-right" action="">
+      <input type="text" class="pull-left input-medium search-query" placeholder="Search">
+      <span class="btn-group">
+        <button class="btn btn-primary">{{ _("Search") }}</button>
+        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">{{ _("Tasks I created") }}</a></li>
+          <li><a href="#">{{ _("Tasks I accepted") }}</a></li>
+        </ul>
+      </span>
+    </form>
+  </div>
+{% endblock %}

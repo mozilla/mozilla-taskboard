@@ -1,0 +1,34 @@
+{% extends "taskboard/base.html" %}
+
+{% block page_title %}{{ _('Take Task') }}{% endblock %}
+{% block body_id %}take-task{% endblock %}
+{% block body_classes %}box-content{% endblock %}
+
+{% block page_js %}
+  {{ js('taskboard') }}
+{% endblock %}
+
+{% block site_css %}
+  {{ super() }}
+  {{ css('taskboard') }}
+{% endblock %}
+
+{% block main_content %}
+  <section>
+    {% trans %}
+    Are you sure you want to take this task?
+    {% endtrans %}
+    <h1>{{ task.summary }}</h1>
+    <form class="well form-horizontal" action="" method="POST" >
+      {{ csrf() }}
+
+      <div class="form-actions">
+        <button id="submit" name="take" class="btn btn-success">
+          {{ _('Yes, take Task') }}
+        </button>
+        <a href="{{ task.get_absolute_url() }}" class="btn">
+          {{ _("No, Cancel") }}</a>
+      </div>
+    </form>
+  </section>
+{% endblock %}

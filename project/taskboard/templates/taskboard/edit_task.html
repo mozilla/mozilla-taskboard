@@ -1,0 +1,42 @@
+{% extends "taskboard/base.html" %}
+
+{% block page_title %}{{ _('Edit A Task') }}{% endblock %}
+{% block body_id %}edit-task{% endblock %}
+{% block body_classes %}box-content{% endblock %}
+
+{% block page_js %}
+  {{ js('taskboard') }}
+{% endblock %}
+
+{% block site_css %}
+  {{ super() }}
+  {{ css('taskboard') }}
+{% endblock %}
+
+{% if not task %}
+  {% set nav_new_task = "active" %}
+{% endif %}
+
+{% block sub_nav %}
+  {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+  {% set f=form %}
+  <section>
+    <form class="well form-horizontal" action="" method="POST" >
+      {{ csrf() }}
+      {{ bootstrap(form) }}
+      <div class="form-actions">
+        <button id="submit" class="btn btn-primary">
+          {% if object %}
+            {{ _('Update') }}
+          {% else %}
+            {{ _('Create Task') }}
+          {% endif %}
+        </button>
+        <a href="{{ url('list_tasks') }}" class="btn">Cancel</a>
+      </div>
+    </form>
+  </section>
+{% endblock %}
