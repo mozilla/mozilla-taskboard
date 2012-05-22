@@ -4,3 +4,9 @@
 [submodule "vendor-local/funfactory"]
 	path = vendor-local/funfactory
 	url = https://github.com/mozilla/funfactory.git
+[submodule "vendor-local/django-multidb-router"]
+	path = vendor-local/django-multidb-router
+	url = https://github.com/jbalogh/django-multidb-router
+[submodule "vendor-local/django-mozilla-product-details"]
+	path = vendor-local/django-mozilla-product-details
+	url = https://github.com/fwenzel/django-mozilla-product-details.git
