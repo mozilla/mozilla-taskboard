@@ -1,5 +1,4 @@
 import sys, os
-
 # Edit this if necessary or override the variable in your environment.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 
@@ -10,7 +9,7 @@ except ImportError:
     # Production:
     # Add a temporary path so that we can import the funfactory
     tmp_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                            'vendor-local', 'funfactory')
+                            'vendor', 'src', 'funfactory')
     sys.path.append(tmp_path)
 
     from funfactory import manage

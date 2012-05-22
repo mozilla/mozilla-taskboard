@@ -35,8 +35,7 @@ ROOT_URLCONF = '%s.urls' % PROJECT_MODULE
 INSTALLED_APPS = list(INSTALLED_APPS) + [
     # Application base, containing global templates.
     '%s.base' % PROJECT_MODULE,
-    # Example code. Can (and should) be removed for actual projects.
-    '%s.examples' % PROJECT_MODULE,
+    'project.taskboard',
 ]
 
 
@@ -72,3 +71,10 @@ DOMAIN_METHODS['messages'] = [
 # ]
 
 LOGGING = dict(loggers=dict(playdoh = {'level': logging.DEBUG}))
+
+
+ES_DISABLED = True
+ES_HOSTS = ['127.0.0.1:9200']
+ES_INDEXES = dict(default='mozillians')
+
+

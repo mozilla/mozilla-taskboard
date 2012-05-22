@@ -10,3 +10,15 @@
 [submodule "vendor-local/django-mozilla-product-details"]
 	path = vendor-local/django-mozilla-product-details
 	url = https://github.com/fwenzel/django-mozilla-product-details.git
+[submodule "vendor-local/elasticutils"]
+	path = vendor-local/elasticutils
+	url = http://github.com/mozilla/elasticutils
+[submodule "vendor-local/pyes"]
+	path = vendor-local/pyes
+	url = https://github.com/aparo/pyes
+[submodule "vendor-local/requests"]
+	path = vendor-local/requests
+	url = git://github.com/kennethreitz/requests.git
+[submodule "vendor-local/uuslug"]
+	path = vendor-local/uuslug
+	url = git://github.com/un33k/django-uuslug.git

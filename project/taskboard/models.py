@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import signals as dbsignals
 from django.dispatch import receiver
@@ -10,11 +11,11 @@ from elasticutils.models import SearchMixin
 from tower import ugettext_lazy as _
 from uuslug import uuslug as slugify
 
-from users.models import UserProfile
+
 
 
 class Task(SearchMixin, models.Model):
-    contact = models.ForeignKey(UserProfile, verbose_name=_(u'Contact'),
+    contact = models.ForeignKey(User, verbose_name=_(u'Contact'),
                                 related_name="contact_for")
     summary = models.CharField(_(u'Summary'), max_length=255)
     slug = models.CharField(_(u'Slug'), max_length=255, default="")
@@ -25,11 +26,11 @@ class Task(SearchMixin, models.Model):
                                    editable=False)
     assigned = models.DateField(_(u'Assigned'), blank=True, null=True,
                                 help_text=_(u'yyyy-mm-dd'))
-    accepted_by = models.ForeignKey(UserProfile, blank=True, null=True,
+    assigned_to = models.ForeignKey(User, blank=True, null=True,
                                     verbose_name=_(u'Accepted by'),
                                     related_name='accepted_tasks')
     disabled = models.BooleanField(_(u'Disabled'), default=False)
-    created_by = models.ForeignKey(UserProfile, blank=True, null=True,
+    created_by = models.ForeignKey(User, blank=True, null=True,
                                    verbose_name=_(u'Created by'),
                                    related_name='created_tasks')
 

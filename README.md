@@ -1,18 +1,15 @@
-playdoh
-=======
+Install
+-------
 
-Mozilla's Playdoh is a web application template based on [Django][django].
+Clone it
+$ vagrant up
+$ vagrant ssh
 
-Patches are welcome! Feel free to fork and contribute to this project on
-[github][gh-playdoh].
-
-Full [documentation][docs] is available as well.
-
-
-[django]: http://www.djangoproject.com/
-[gh-playdoh]: https://github.com/mozilla/playdoh
-[docs]: http://playdoh.rtfd.org/
-
+Now in the VM:
+$ cd mozilla-taskboard/
+$ sudo pip install -f ./requirements/dev.txt
+$ python ./manage syncdb
+$ python ./manage runserver 0.0.0.0:8000
 
 License
 -------
