@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from taskboard.models import Task
+from project.taskboard.models import Task
 
 
 def mark_disabled(modeladmin, request, queryset):

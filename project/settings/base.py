@@ -2,6 +2,10 @@
 # repo. If you need to override a setting locally, use settings_local.py
 
 from funfactory.settings_base import *
+import os
+
+# Path from the project
+here = lambda x: os.path.join(os.path.abspath(os.path.dirname(__file__)), x)
 
 # Name of the top-level module where you put all your apps.
 # If you did not install Playdoh with the funfactory installer script
@@ -33,9 +37,11 @@ MINIFY_BUNDLES = {
 ROOT_URLCONF = '%s.urls' % PROJECT_MODULE
 
 INSTALLED_APPS = list(INSTALLED_APPS) + [
+    'django.contrib.admin',
+
     # Application base, containing global templates.
     '%s.base' % PROJECT_MODULE,
-    'project.taskboard',
+    '%s.taskboard' % PROJECT_MODULE,
 ]
 
 
@@ -70,11 +76,15 @@ DOMAIN_METHODS['messages'] = [
 #    ('media/js/**.js', 'javascript'),
 # ]
 
-LOGGING = dict(loggers=dict(playdoh = {'level': logging.DEBUG}))
+LOGGING = dict(loggers=dict(playdoh={'level': logging.DEBUG}))
 
 
 ES_DISABLED = True
 ES_HOSTS = ['127.0.0.1:9200']
-ES_INDEXES = dict(default='mozillians')
+ES_INDEXES = dict(default='taskboard')
 
 
+# Static and Media
+STATICFILES_DIRS = (
+    here('static'),
+    )

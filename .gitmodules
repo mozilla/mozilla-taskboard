@@ -22,3 +22,6 @@
 [submodule "vendor-local/uuslug"]
 	path = vendor-local/uuslug
 	url = git://github.com/un33k/django-uuslug.git
+[submodule "vendor-local/django"]
+	path = vendor-local/django
+	url = https://github.com/django/django.git
